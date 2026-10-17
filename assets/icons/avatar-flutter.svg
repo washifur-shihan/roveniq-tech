@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <defs>
+    <linearGradient id="bgGradFlutter" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0369A1"/>
+    </linearGradient>
+  </defs>
+  <circle cx="60" cy="60" r="56" fill="#0C4A6E" stroke="#38BDF8" stroke-width="2.5" />
+  <path d="M28 102 C28 85, 42 76, 60 76 C78 76, 92 85, 92 102 Z" fill="#0284C7" />
+  <rect x="52" y="66" width="16" height="14" rx="3" fill="#FCD34D" />
+  <ellipse cx="60" cy="52" rx="19" ry="22" fill="#FDE68A" />
+  <path d="M42 45 C42 28, 52 23, 60 23 C68 23, 78 28, 78 45 C78 40, 71 31, 60 31 C49 31, 42 40, 42 45 Z" fill="#0F172A" />
+  <!-- Headphones -->
+  <path d="M38 52 C38 35, 82 35, 82 52" stroke="#38BDF8" stroke-width="4" fill="none" />
+  <rect x="34" y="47" width="8" height="15" rx="3" fill="#38BDF8" />
+  <rect x="78" y="47" width="8" height="15" rx="3" fill="#38BDF8" />
+  <path d="M54 64 Q60 69 66 64" stroke="#92400E" stroke-width="2" stroke-linecap="round" />
+</svg>

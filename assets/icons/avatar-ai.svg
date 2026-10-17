@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <circle cx="60" cy="60" r="56" fill="#4C1D95" stroke="#A855F7" stroke-width="2.5" />
+  <path d="M28 102 C28 85, 42 76, 60 76 C78 76, 92 85, 92 102 Z" fill="#7C3AED" />
+  <rect x="52" y="66" width="16" height="14" rx="3" fill="#FBBF24" />
+  <ellipse cx="60" cy="52" rx="19" ry="22" fill="#FDE68A" />
+  <path d="M40 50 C40 30, 50 24, 60 24 C70 24, 80 30, 80 50 C80 44, 72 34, 60 34 C48 34, 40 44, 40 50 Z" fill="#2E1065" />
+  <!-- AI Neural Visor -->
+  <rect x="42" y="47" width="36" height="8" rx="4" fill="#06B6D4" />
+  <line x1="44" y1="51" x2="76" y2="51" stroke="#FFFFFF" stroke-width="1.5" stroke-dasharray="3 2" />
+  <path d="M54 64 Q60 68 66 64" stroke="#92400E" stroke-width="2" stroke-linecap="round" />
+</svg>
