@@ -65,7 +65,7 @@ This website is engineered with zero runtime dependencies and zero server requir
 
 5. **Client Lead Generation (100% Database-Free)**:
    - **Direct WhatsApp Chat**: Linked directly to `01759957439` (`https://wa.me/8801759957439`).
-   - **Direct Email Client**: Linked to `washifur.shihan@gmail.com` with formatted mailto triggers and 1-click clipboard copy with toast feedback.
+   - **Direct Email Client**: Linked to `roveniq.technologies@gmail.com` with formatted mailto triggers and 1-click clipboard copy with toast feedback.
    - **Official Facebook**: Direct connection to `https://www.facebook.com/profile.php?id=61594943630411`.
    - **Consultation Form**: Packages user inputs into a structured message and dispatches via WhatsApp or Email without requiring backend databases.
 
@@ -97,5 +97,5 @@ roveniq-technologies/
 
 - **Founder & Lead Developer**: Washifur Rahman (Shihan)
 - **WhatsApp**: [+8801759957439](https://wa.me/8801759957439) / `01759957439`
-- **Email**: [washifur.shihan@gmail.com](mailto:washifur.shihan@gmail.com)
+- **Email**: [roveniq.technologies@gmail.com](mailto:roveniq.technologies@gmail.com)
 - **Facebook**: [Roveniq Technologies on Facebook](https://www.facebook.com/profile.php?id=61594943630411)

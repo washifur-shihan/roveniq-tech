@@ -212,9 +212,9 @@ Sent via Roveniq Technologies Online Hub`;
       const data = getFormData();
       const subject = encodeURIComponent(`Project Inquiry: ${data.projectType} - ${data.name}`);
       const body = encodeURIComponent(data.structuredText.replace(/\*/g, ''));
-      const mailtoUrl = `mailto:washifur.shihan@gmail.com?subject=${subject}&body=${body}`;
+      const mailtoUrl = `mailto:roveniq.technologies@gmail.com?subject=${subject}&body=${body}`;
       window.location.href = mailtoUrl;
-      showToast('Opening your email client to send to Washifur...');
+      showToast('Opening your email client to send to Roveniq Technologies...');
     });
   }
 
