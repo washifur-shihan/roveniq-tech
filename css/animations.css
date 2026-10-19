@@ -133,3 +133,8 @@
   margin-left: 4px;
   animation: blinkCursor 1s infinite;
 }
+
+@keyframes spinGlow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}

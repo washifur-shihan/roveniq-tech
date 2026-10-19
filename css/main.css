@@ -1251,11 +1251,15 @@ body {
 }
 
 .lead-avatar-img {
-  width: 90px;
-  height: 90px;
+  width: 110px;
+  height: 110px;
   border-radius: var(--radius-full);
+  object-fit: cover;
+  object-position: center 20%;
   border: 3px solid var(--brand-purple);
-  box-shadow: 0 0 25px rgba(139, 92, 246, 0.4);
+  box-shadow: 0 0 30px rgba(139, 92, 246, 0.45), 0 0 50px rgba(6, 182, 212, 0.25);
+  flex-shrink: 0;
+  display: block;
 }
 
 .lead-names h3 {
@@ -1623,6 +1627,35 @@ textarea.form-control {
 }
 .form-buttons-row .btn {
   flex: 1;
+}
+
+.form-success-banner {
+  background: rgba(16, 185, 129, 0.12);
+  border: 1px solid rgba(16, 185, 129, 0.45);
+  color: #a7f3d0;
+  padding: 16px 20px;
+  border-radius: var(--radius-md);
+  margin-bottom: 22px;
+  font-size: 0.92rem;
+  line-height: 1.6;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  box-shadow: 0 0 25px rgba(16, 185, 129, 0.15);
+  animation: fadeIn 0.4s ease forwards;
+}
+
+.form-fallback-links {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 0.82rem;
+  color: var(--text-muted);
+}
+
+.form-fallback-links a {
+  color: var(--brand-cyan);
+  text-decoration: underline;
+  margin: 0 4px;
 }
 
 /* ==========================================================================
