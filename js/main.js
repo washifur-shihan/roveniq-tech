@@ -171,26 +171,24 @@ function initContactForm() {
   if (!form) return;
 
   function getFormData() {
-    const name = document.getElementById('form-name')?.value.trim() || 'Potential Client';
-    const contact = document.getElementById('form-contact')?.value.trim() || 'Not specified';
-    const projectType = document.getElementById('form-project-type')?.value || 'Web & AI Development';
-    const budget = document.getElementById('form-budget')?.value || 'Flexible';
+    const name = document.getElementById('form-name')?.value.trim() || '';
+    const contact = document.getElementById('form-contact')?.value.trim() || '';
+    const projectType = document.getElementById('form-project-type')?.value || 'AI Integration & Autonomous Agents';
     const message = document.getElementById('form-message')?.value.trim() || 'I am interested in working with Roveniq Technologies.';
 
     const structuredText = 
 `*New Project Inquiry - Roveniq Technologies*
 ━━━━━━━━━━━━━━━━━━━━━━
-👤 *Client Name:* ${name}
-📞 *Contact (Email/Phone):* ${contact}
+👤 *Client Name:* ${name || 'Potential Client'}
+📞 *Contact (Email/Phone):* ${contact || 'Not specified'}
 🚀 *Service Needed:* ${projectType}
-💰 *Estimated Budget:* ${budget}
 ━━━━━━━━━━━━━━━━━━━━━━
 📝 *Project Overview:*
 ${message}
 ━━━━━━━━━━━━━━━━━━━━━━
 Sent via Roveniq Technologies Online Hub`;
 
-    return { name, contact, projectType, budget, message, structuredText };
+    return { name, contact, projectType, message, structuredText };
   }
 
   // Send via WhatsApp
@@ -198,6 +196,11 @@ Sent via Roveniq Technologies Online Hub`;
     btnWhatsApp.addEventListener('click', (e) => {
       e.preventDefault();
       const data = getFormData();
+      if (!data.name || !data.contact) {
+        showToast('Please enter your Name and Email/Phone before sending.');
+        document.getElementById('form-name')?.focus();
+        return;
+      }
       const encoded = encodeURIComponent(data.structuredText);
       const waUrl = `https://wa.me/8801759957439?text=${encoded}`;
       window.open(waUrl, '_blank');
@@ -205,16 +208,83 @@ Sent via Roveniq Technologies Online Hub`;
     });
   }
 
-  // Send via Email (mailto)
+  // Send Direct Email (Ensures 100% Delivery to roveniq.technologies@gmail.com)
   if (btnEmail) {
     btnEmail.addEventListener('click', (e) => {
       e.preventDefault();
       const data = getFormData();
-      const subject = encodeURIComponent(`Project Inquiry: ${data.projectType} - ${data.name}`);
-      const body = encodeURIComponent(data.structuredText.replace(/\*/g, ''));
-      const mailtoUrl = `mailto:roveniq.technologies@gmail.com?subject=${subject}&body=${body}`;
-      window.location.href = mailtoUrl;
-      showToast('Opening your email client to send to Roveniq Technologies...');
+
+      if (!data.name || !data.contact) {
+        showToast('Please enter your Name and Email/Phone before sending.');
+        document.getElementById('form-name')?.focus();
+        return;
+      }
+
+      const originalBtnHTML = btnEmail.innerHTML;
+      btnEmail.disabled = true;
+      btnEmail.innerHTML = `
+        <span style="display:inline-block; animation:spinGlow 1s linear infinite;">⏳</span>
+        <span>Sending to Inbox...</span>
+      `;
+
+      // 1. Direct AJAX Dispatch to roveniq.technologies@gmail.com via FormSubmit
+      fetch('https://formsubmit.co/ajax/roveniq.technologies@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          name: data.name,
+          contact: data.contact,
+          service: data.projectType,
+          message: data.message,
+          _subject: `New Technical Proposal Request: ${data.projectType} - ${data.name}`,
+          _replyto: data.contact.includes('@') ? data.contact : undefined,
+          _template: 'table'
+        })
+      })
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Network response not ok');
+        }
+        return response.json();
+      })
+      .then(() => {
+        // Render prominent in-page success confirmation
+        const existingBanner = document.getElementById('form-feedback-banner');
+        if (existingBanner) existingBanner.remove();
+
+        const banner = document.createElement('div');
+        banner.id = 'form-feedback-banner';
+        banner.className = 'form-success-banner';
+        banner.innerHTML = `
+          <span style="font-size:1.6rem; line-height:1;">📬</span>
+          <div>
+            <strong style="color:#ffffff; font-size:1.05rem;">Proposal Dispatched Directly!</strong><br>
+            Your inquiry was delivered to <strong>roveniq.technologies@gmail.com</strong>. Washifur Rahman will review your technical requirements and respond within 1 business hour.
+          </div>
+        `;
+        form.parentNode.insertBefore(banner, form);
+        banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+        form.reset();
+        showToast('✓ Delivered directly to roveniq.technologies@gmail.com!');
+      })
+      .catch(() => {
+        // Seamless fallback to native mail client and web Gmail
+        const subject = encodeURIComponent(`Project Inquiry: ${data.projectType} - ${data.name}`);
+        const body = encodeURIComponent(data.structuredText.replace(/\*/g, ''));
+        const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=roveniq.technologies@gmail.com&su=${subject}&body=${body}`;
+        const mailtoUrl = `mailto:roveniq.technologies@gmail.com?subject=${subject}&body=${body}`;
+
+        window.open(gmailUrl, '_blank') || (window.location.href = mailtoUrl);
+        showToast('Opening Gmail Web to roveniq.technologies@gmail.com...');
+      })
+      .finally(() => {
+        btnEmail.disabled = false;
+        btnEmail.innerHTML = originalBtnHTML;
+      });
     });
   }
 
